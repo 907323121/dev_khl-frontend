@@ -1,16 +1,12 @@
 package com.yupi.yudada.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.yupi.yudada.constant.UserConstant;
-import com.yupi.yudada.model.vo.LoginUserVO;
-import com.yupi.yudada.model.vo.UserVO;
-import com.yupi.yudada.service.UserService;
-import com.yupi.yudada.service.impl.UserServiceImpl;
 import com.yupi.yudada.annotation.AuthCheck;
 import com.yupi.yudada.common.BaseResponse;
 import com.yupi.yudada.common.DeleteRequest;
 import com.yupi.yudada.common.ErrorCode;
 import com.yupi.yudada.common.ResultUtils;
+import com.yupi.yudada.constant.UserConstant;
 import com.yupi.yudada.exception.BusinessException;
 import com.yupi.yudada.exception.ThrowUtils;
 import com.yupi.yudada.model.dto.user.UserAddRequest;
@@ -20,10 +16,14 @@ import com.yupi.yudada.model.dto.user.UserRegisterRequest;
 import com.yupi.yudada.model.dto.user.UserUpdateMyRequest;
 import com.yupi.yudada.model.dto.user.UserUpdateRequest;
 import com.yupi.yudada.model.entity.User;
+import com.yupi.yudada.model.vo.LoginUserVO;
+import com.yupi.yudada.model.vo.UserVO;
+import com.yupi.yudada.service.UserService;
 
 import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -33,7 +33,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import static com.yupi.yudada.service.impl.UserServiceImpl.SALT;
 
 /**
  * 用户接口
@@ -48,7 +51,6 @@ public class UserController {
 
     @Resource
     private UserService userService;
-
 
     // region 登录相关
 
@@ -93,7 +95,6 @@ public class UserController {
         LoginUserVO loginUserVO = userService.userLogin(userAccount, userPassword, request);
         return ResultUtils.success(loginUserVO);
     }
-
 
     /**
      * 用户注销
@@ -143,7 +144,7 @@ public class UserController {
         BeanUtils.copyProperties(userAddRequest, user);
         // 默认密码 12345678
         String defaultPassword = "12345678";
-        String encryptPassword = DigestUtils.md5DigestAsHex((UserServiceImpl.SALT + defaultPassword).getBytes());
+        String encryptPassword = DigestUtils.md5DigestAsHex((SALT + defaultPassword).getBytes());
         user.setUserPassword(encryptPassword);
         boolean result = userService.save(user);
         ThrowUtils.throwIf(!result, ErrorCode.OPERATION_ERROR);

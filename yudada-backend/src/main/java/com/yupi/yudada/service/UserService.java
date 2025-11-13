@@ -2,11 +2,10 @@ package com.yupi.yudada.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.yupi.yudada.model.vo.LoginUserVO;
-import com.yupi.yudada.model.vo.UserVO;
 import com.yupi.yudada.model.dto.user.UserQueryRequest;
 import com.yupi.yudada.model.entity.User;
-
+import com.yupi.yudada.model.vo.LoginUserVO;
+import com.yupi.yudada.model.vo.UserVO;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
@@ -37,7 +36,6 @@ public interface UserService extends IService<User> {
      * @return 脱敏后的用户信息
      */
     LoginUserVO userLogin(String userAccount, String userPassword, HttpServletRequest request);
-
 
     /**
      * 获取当前登录用户

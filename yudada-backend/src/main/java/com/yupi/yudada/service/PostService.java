@@ -4,9 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.yupi.yudada.model.dto.post.PostQueryRequest;
-import com.yupi.yudada.model.vo.PostVO;
 import com.yupi.yudada.model.entity.Post;
-
+import com.yupi.yudada.model.vo.PostVO;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -32,7 +31,6 @@ public interface PostService extends IService<Post> {
      * @return
      */
     QueryWrapper<Post> getQueryWrapper(PostQueryRequest postQueryRequest);
-
 
     /**
      * 获取帖子封装

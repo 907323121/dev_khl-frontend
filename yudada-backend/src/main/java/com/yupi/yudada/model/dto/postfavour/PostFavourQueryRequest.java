@@ -2,9 +2,7 @@ package com.yupi.yudada.model.dto.postfavour;
 
 import com.yupi.yudada.common.PageRequest;
 import com.yupi.yudada.model.dto.post.PostQueryRequest;
-
 import java.io.Serializable;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

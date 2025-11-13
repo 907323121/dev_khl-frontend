@@ -3,23 +3,25 @@ package com.yupi.yudada.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.yupi.yudada.constant.CommonConstant;
-import com.yupi.yudada.model.dto.post.PostQueryRequest;
-import com.yupi.yudada.model.vo.PostVO;
-import com.yupi.yudada.model.vo.UserVO;
 import com.yupi.yudada.common.ErrorCode;
+import com.yupi.yudada.constant.CommonConstant;
 import com.yupi.yudada.exception.BusinessException;
 import com.yupi.yudada.exception.ThrowUtils;
 import com.yupi.yudada.mapper.PostFavourMapper;
 import com.yupi.yudada.mapper.PostMapper;
 import com.yupi.yudada.mapper.PostThumbMapper;
+import com.yupi.yudada.model.dto.post.PostQueryRequest;
 import com.yupi.yudada.model.entity.Post;
 import com.yupi.yudada.model.entity.PostFavour;
 import com.yupi.yudada.model.entity.PostThumb;
 import com.yupi.yudada.model.entity.User;
+import com.yupi.yudada.model.vo.PostVO;
+import com.yupi.yudada.model.vo.UserVO;
 import com.yupi.yudada.service.PostService;
 import com.yupi.yudada.service.UserService;
 import com.yupi.yudada.utils.SqlUtils;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +29,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-
 import lombok.extern.slf4j.Slf4j;
 import cn.hutool.core.collection.CollUtil;
 import org.apache.commons.lang3.ObjectUtils;
@@ -52,7 +53,6 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements Po
 
     @Resource
     private PostFavourMapper postFavourMapper;
-
 
     @Override
     public void validPost(Post post, boolean add) {
@@ -114,7 +114,6 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements Po
                 sortField);
         return queryWrapper;
     }
-
 
     @Override
     public PostVO getPostVO(Post post, HttpServletRequest request) {

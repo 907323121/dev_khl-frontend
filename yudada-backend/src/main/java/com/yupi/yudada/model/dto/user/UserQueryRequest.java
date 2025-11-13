@@ -1,9 +1,7 @@
 package com.yupi.yudada.model.dto.user;
 
 import com.yupi.yudada.common.PageRequest;
-
 import java.io.Serializable;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

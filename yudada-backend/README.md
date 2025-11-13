@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SpringBoot 项目初始模板
 
 > 作者：[程序员鱼皮](https://github.com/liyupi)
@@ -84,7 +85,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/my_db
+    url: jdbc:mysql://localhost:3306/yudada
     username: root
     password: 123456
 ```
@@ -179,3 +180,7 @@ String upperDataKey = "UserComment";
 ```
 
 生成代码后，可以移动到实际项目中，并且按照 `// todo` 注释的提示来针对自己的业务需求进行修改。
+=======
+# AI-
+基于 Spring Boot + Redis + ChatGLM + RxJava + SSE 的 AI 答题应用平台。用户可基于 AI 快速生成题目并制作应用，经管理员审核后，可在线答题并基于多种评分算法或 AI 得到回答总结；管理员还可集中管理整站内容，并进行统计分析。
+>>>>>>> 3ee84fa74b83a1b6e177b7f76df39219ac1e8d1c
