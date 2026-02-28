@@ -19,6 +19,7 @@ import com.yupi.yudada.model.enums.ReviewStatusEnum;
 import com.yupi.yudada.model.vo.AppVO;
 import com.yupi.yudada.service.AppService;
 import com.yupi.yudada.service.UserService;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
@@ -54,6 +55,7 @@ public class AppController {
      * @param request
      * @return
      */
+    @ApiOperation("创建应用")
     @PostMapping("/add")
     public BaseResponse<Long> addApp(@RequestBody AppAddRequest appAddRequest, HttpServletRequest request) {
         ThrowUtils.throwIf(appAddRequest == null, ErrorCode.PARAMS_ERROR);
